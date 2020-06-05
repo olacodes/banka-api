@@ -1,0 +1,28 @@
+version: '3'
+
+services: 
+    db:
+        image: postgres
+        environment: 
+            - POSTGRES_DB=bankadb
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - "bankadb:/var/lib/postgresql/data"
+
+    api:
+        build: ./
+        command: bash -c "python manage.py makemigrations --settings=banka.settings.development &&
+            python manage.py migrate --settings=banka.settings.development &&
+            python manage.py runserver 0.0.0.0:8000 --settings=banka.settings.development"
+        volumes: 
+            - "./banka:/banka-api"
+        env_file: 
+            - .env
+        ports: 
+            - "9000:8000"
+        depends_on: 
+            - db
+            
+volumes: 
+    bankadb:
+        
