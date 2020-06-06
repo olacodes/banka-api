@@ -1,0 +1,38 @@
+name: CI for banka using Github actions
+
+# on events
+on:
+    push:
+        branches:
+            - develop
+    pull_request:
+        branches:
+            - develop
+
+# jobs to run
+jobs:
+    test:
+        name: test
+        runs-on: ubuntu-latest
+        steps:
+            # step 1 setup python
+            - name: Setup python
+              uses: actions/setup-python@v2
+
+            # step 2: clone repository to workspace
+            - name: checkout repository to workspace directory
+              uses: actions/checkout@v2
+
+            # Step 3 Install all the dependencies
+            - name: Install the dependencies
+              run: pip install -r requirements.txt
+            
+            # Run test
+            - name: Run test  
+              env:
+                SECRET_KEY: ${{ secrets.ENV }}
+              
+              run: |
+                cd banka
+                python manage.py test --settings=banka.settings.testing
+            
