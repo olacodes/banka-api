@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Run makemigrations and migrate 
+echo -e "\n[*] Ensure api container is running before executing this script\n"
+docker-compose exec api python manage.py makemigrations --settings=banka.settings.development
+docker-compose exec api python manage.py migrate --settings=banka.settings.development
