@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Stop running containers by compose
+echo -e "\n[*] Stopping all running container if exist"
+docker-compose down || exit >> /dev/null 2>&1
