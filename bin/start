@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Stop container before starting a new container
+bin/stop
+bin/migrate
+docker-compose up -d
+
+if ! bin/migrate > /dev/null 2>&1 ; then
+    echo -e "\n[*] Stopping all containers due to failed migration attempt\n"
+    docker-compose down
+    exit
+fi
+
+# Print out logs if -d is not provided
+if [ "$1" != "-d" ]; then bin/logs; fi
