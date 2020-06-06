@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Open a running api container via compose in browser
+echo -e "\n[*] Ensure that application is running before executing this script\n"
+start http://localhost:9000/api </dev/null >/dev/null 2>&1 & disown
