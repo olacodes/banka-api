@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from .user import User
 
@@ -7,6 +9,7 @@ class Account(models.Model):
     This model creates account table in the database with the following fields and
     has oneToMany-relationship with User(client) owner of the account
     """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     account_number = models.IntegerField(max_length=20, null=False)
     created_on = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
