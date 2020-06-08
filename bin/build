@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Build docker images as defined in compose file
+bin/stop
+echo -e "\n[*] Building docker images defined in compose file"
+docker-compose build

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# # Install specific requirements
+
+bin/stop
+source bin/env
+pip uninstall $*
+pip freeze > requirements.txt
+docker-compose build
