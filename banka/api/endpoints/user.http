@@ -1,0 +1,13 @@
+POST http://localhost:9000/api/v1/auth/signup/ HTTP/1.1
+content-type: application/json
+Cookie: 
+
+{
+    "firstname": "sodiq",
+    "lastname": "ishola",
+    "password": "olatunde",
+    "email": "olatundesodiq@gmail.com",
+    "user_type": "staff",
+    "is_admin": true
+}
+###

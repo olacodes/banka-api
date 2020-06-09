@@ -34,11 +34,11 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'corsheaders',
     'rest_framework',
+    'corsheaders',
     'api'
 ]
-
+CSRF_COOKIE_SECURE = True
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = [
