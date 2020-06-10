@@ -10,5 +10,5 @@ def index(request):
     return JsonResponse(dict(message=message), status=200)
 
 def home(request):
-    message = 'You are not expected to be here, visit /api/v1/'
+    message = 'You are not expected to be here, visit /api/v1'
     return JsonResponse(dict(message=message), status=403)
