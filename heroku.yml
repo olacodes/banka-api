@@ -1,12 +1,12 @@
 build:
-    docker:
-      web: Dockerfile
+  docker:
+    web: Dockerfile
   
-  release:
-    image: web
-    command:
-      - python manage.py migrate --settings=banka.settings.production
-  
-  run:
-    web: python manage.py runserver 0.0.0.0:$PORT --settings=banka.settings.production
+release:
+  image: web
+  command:
+    - python manage.py migrate --settings=banka.settings.production
+
+run:
+  web: python manage.py runserver 0.0.0.0:$PORT --settings=banka.settings.production
   
