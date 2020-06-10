@@ -13,8 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, include
+from django.urls import path, include, re_path
+from .views import (notfound, index, home)
+
 
 urlpatterns = [
-    path('api/v1/', include('api.urls'))
+    # match api index route request
+    re_path(r'^(?:api/v1?)$', index),
+
+    # match api/v1 routes
+    path('api/v1/', include('api.urls')),
+
+    # match all other routes and respond with 403
+    re_path(r'^(?:.*)$', home)
 ]
