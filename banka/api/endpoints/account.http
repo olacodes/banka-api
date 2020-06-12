@@ -1,0 +1,11 @@
+POST http://localhost:9000/api/v1/accounts/ HTTP/1.1
+content-type: application/json
+Cookie: 
+
+{
+    "user_id": "515aaf63-d13d-4fd7-aca4-f433aa2b9cd5",
+    "account_type": "savings",
+    "account_status": "draft",
+    "balance": 0
+}
+###
