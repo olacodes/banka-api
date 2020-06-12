@@ -1,49 +1,41 @@
-from .user_field_validation import UserFieldValidation
 from rest_framework.response import Response
 from rest_framework import status
 
+from .user_field_validation import UserFieldValidation
+from ...utils.api_response import APIResponse
+
+
 def validate_user(data):
+    api_response = APIResponse()
 
     if UserFieldValidation.validate_firstname(data) == False:
-        return Response({
-            'status': 400, 
-            'message': 'firstname must not be less than 2 characters or empty',
-            'error': "Invalid firstname"
-        },status=status.HTTP_400_BAD_REQUEST)
+        APIResponse.set_error(
+            api_response, 400, 'firstname must not be less than 2 characters or empty', "Invalid firstname")
+        return APIResponse.send(api_response)
 
     if UserFieldValidation.validate_lastname(data) == False:
-        return Response({
-        'status': 400,
-        'message': 'lastname must not be less than 2 characters or empty', 
-        'error': "Invalid lastname"
-    },status=status.HTTP_400_BAD_REQUEST)
+        APIResponse.set_error(
+            api_response, 400, 'lastname must not be less than 2 characters or empty', "Invalid lastname")
+        return APIResponse.send(api_response)
 
     if UserFieldValidation.validate_email(data) == False:
-        return Response({
-            'status': 400,
-            'message': 'please provide a valid email', 
-            'error': "Invalid Email"
-        },status=status.HTTP_400_BAD_REQUEST)
+        APIResponse.set_error(
+            api_response, 400, 'please provide a valid email',  "Invalid email")
+        return APIResponse.send(api_response)
 
     if UserFieldValidation.validate_password(data) == False:
-        return Response({
-        'status': 400,
-        'message': 'password must not be less than 5 characters or empty', 
-        'error': "Invalid password"
-    },status=status.HTTP_400_BAD_REQUEST)
-    
-    if UserFieldValidation.validate_user_type(data) == False:
-        return Response({
-        'status': 400,
-        'message': 'user_type can only be staff or client', 
-        'error': "Invalid user_type"
-    },status=status.HTTP_400_BAD_REQUEST)
-    
-    if UserFieldValidation.validate_is_admin(data) == False:
-        return Response({
-        'status': 400,
-        'message': 'is_admin can only be true or false', 
-        'error': "Invalid is_admin"
-    },status=status.HTTP_400_BAD_REQUEST)
+        APIResponse.set_error(
+            api_response, 400, 'password must not be less than 5 characters or empty',  "Invalid password")
+        return APIResponse.send(api_response)
 
-    return True;
+    if UserFieldValidation.validate_user_type(data) == False:
+        APIResponse.set_error(
+            api_response, 400,  'user_type can only be staff or client',  "Invalid user_type")
+        return APIResponse.send(api_response)
+
+    if UserFieldValidation.validate_is_admin(data) == False:
+        APIResponse.set_error(
+            api_response, 400,  'is_admin can only be true or false',  "Invalid is_admin")
+        return APIResponse.send(api_response)
+
+    return True
