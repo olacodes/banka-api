@@ -7,14 +7,14 @@ def validate_user(data):
     if UserFieldValidation.validate_firstname(data) == False:
         return Response({
             'status': 400, 
-            'message': 'username must not be less than 2 characters',
-            'error': "Invalid Username"
+            'message': 'firstname must not be less than 2 characters or empty',
+            'error': "Invalid firstname"
         },status=status.HTTP_400_BAD_REQUEST)
 
     if UserFieldValidation.validate_lastname(data) == False:
         return Response({
         'status': 400,
-        'message': 'lastname must not be less than 2 characters', 
+        'message': 'lastname must not be less than 2 characters or empty', 
         'error': "Invalid lastname"
     },status=status.HTTP_400_BAD_REQUEST)
 
@@ -28,7 +28,7 @@ def validate_user(data):
     if UserFieldValidation.validate_password(data) == False:
         return Response({
         'status': 400,
-        'message': 'password must not be less than 5 characters', 
+        'message': 'password must not be less than 5 characters or empty', 
         'error': "Invalid password"
     },status=status.HTTP_400_BAD_REQUEST)
     
