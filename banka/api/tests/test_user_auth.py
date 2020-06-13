@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework import status 
 from rest_framework.test import APITestCase
 
-from .mock_data.user_data import UserData
+from .mock_data.mock_data import UserData
 
 
 class TestUserAuth(APITestCase):
@@ -20,6 +20,3 @@ class TestUserAuth(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['data']['firstname'], 'test')
         self.assertEqual(response.data['data']['lastname'], 'testing')
-
-
-

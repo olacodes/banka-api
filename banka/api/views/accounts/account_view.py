@@ -14,6 +14,7 @@ class AccountView(APIView):
     def post(self, request):
         # Create Account
         data = request.data
+        data = data.copy()
 
         # Generate Account number
         account_number = Helper.create_account_num(Account)
