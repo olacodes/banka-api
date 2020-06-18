@@ -35,6 +35,6 @@ def create_account(user_id):
 
 def update_account():
     return {
-        "account_status": "dormant",
+        "account_status": "active",
         "account_type": "savings"
     }

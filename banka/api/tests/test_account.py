@@ -21,4 +21,5 @@ class TestAccount(APITestCase):
         url = f'/api/v1/accounts/{acc_num}/'
         response = self.client.put(url, update_account(), format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['data']['account_status'], 'active')
 
