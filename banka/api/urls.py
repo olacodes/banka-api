@@ -11,7 +11,7 @@ urlpatterns = [
     path('auth/signin/', signin.SignIn.as_view(), name="signin"),
 
     path('accounts/', account_view.AccountView.as_view(), name="accounts"),
-    path('accounts/<int:account_number>/', account_detail_view.AccountDetail.as_view(),
+    path('account/<int:account_number>/', account_detail_view.AccountDetail.as_view(),
          name="account_detail"),
 
     # match route that has not been registered above
