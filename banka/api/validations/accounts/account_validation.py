@@ -1,5 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 from .account_field_validation import AccountFieldValidation
 from ...models.user import User
@@ -39,3 +41,23 @@ def validate_account(data):
         return APIResponse.send(api_response)
 
     return True
+
+
+def validate_account_type(value):
+    value = value.lower().strip()
+    if not (value == 'savings' or value == 'current'):
+        raise ValidationError(
+            _('account type can only be savings or current'),
+            params={'value': value},
+        )
+
+
+def validate_account_status(value):
+    value = value.lower().strip()
+    if not (value == 'draft' or value == 'active' or value == 'dormant'):
+        raise ValidationError(
+            _('account status can only be active or dormant or draft'),
+            params={'value': value}
+        )
+
+        

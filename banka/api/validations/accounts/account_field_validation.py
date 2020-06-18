@@ -57,3 +57,11 @@ class AccountFieldValidation:
             return id
         except:
             return False
+
+    @classmethod
+    def validate_account_number_exist(cls, data, model):
+        account_number = cls.validate_account_number(data)
+        # check if account number exist in db
+        if not account_number:
+            return False
+        return Helper.get_from_DB(model, 'account_number', int(account_number))

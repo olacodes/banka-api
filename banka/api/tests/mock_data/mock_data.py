@@ -31,3 +31,10 @@ def create_account(user_id):
         "account_status": "draft",
         "balance": 0,
     }
+
+
+def update_account():
+    return {
+        "account_status": "dormant",
+        "account_type": "savings"
+    }

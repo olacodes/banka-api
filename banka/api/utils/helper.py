@@ -9,10 +9,6 @@ class Helper:
     decimal_regex = '^[-+]?[0-9]+\.[0-9]+$'
 
     @staticmethod
-    def is_empty(value):
-        return not (bool(value))
-
-    @staticmethod
     def regex_validator(value, regex):
         return False if not value else bool(re.search(regex, value))
 
@@ -80,3 +76,11 @@ class Helper:
             except:
                 unique = True
                 return account_number
+
+    @staticmethod
+    def get_from_DB(model, field, value):
+        try:
+            result = model.objects.get(field=value)
+            return result
+        except:
+            return False
