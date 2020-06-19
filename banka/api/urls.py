@@ -1,14 +1,18 @@
 from django.urls import path, include, re_path
 from banka.views import notfound
 from .views.auth import (
-  signup, 
-  signin
+    signup,
+    signin
 )
+from .views.accounts import account_view
 
 
 urlpatterns = [
     path('auth/signup/', signup.SignUp.as_view(), name="signup"),
     path('auth/signin/', signin.SignIn.as_view(), name="signin"),
-  # match route that has not been registered above
+
+    path('accounts/', account_view.AccountView.as_view(), name="accounts"),
+
+    # match route that has not been registered above
     re_path(r'^(?:.*)$', notfound)
 ]
