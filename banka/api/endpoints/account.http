@@ -9,3 +9,13 @@ Cookie:
     "balance": 0
 }
 ###
+
+PUT http://localhost:9000/api/v1/accounts/7734693055/ HTTP/1.1
+content-type: application/json
+Cookie: 
+
+{
+    "account_status": "active",
+    "account_type": "savings"
+}
+###
