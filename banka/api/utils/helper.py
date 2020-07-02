@@ -84,3 +84,11 @@ class Helper:
             return result
         except:
             return False
+
+    @staticmethod
+    def get_account_number(model, value):
+        try:
+            result = model.objects.get(account_number=value)
+            return True
+        except:
+            return False

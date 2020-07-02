@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Run Coverage in a container
+echo -e "\n[*] Running the test coverage \n"
+docker-compose exec api coverage run manage.py test --settings=banka.settings.testing
+docker-compose exec api coverage report

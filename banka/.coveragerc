@@ -1,0 +1,10 @@
+# .coveragerc to control coverage.py
+[run]
+branch = True
+source = ./
+omit = tests.py
+parallel = False
+[report]
+show_missing = True
+[html]
+directory = coveragereport

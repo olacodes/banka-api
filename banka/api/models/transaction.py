@@ -10,12 +10,12 @@ class Transaction(models.Model):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created_on = models.DateTimeField(auto_now=True)
-    transaction_type = models.CharField(max_length=10, null=False) # credit or debit
-    account_number = models.IntegerField(null=False)
-    cashier = models.OneToOneField(User, on_delete=models.CASCADE, null=False) # cashier who consummated the transaction
+    transaction_type = models.CharField(max_length=40, null=False) # credit or debit
+    account_number = models.BigIntegerField(null=False)
+    cashier = models.ForeignKey(User, on_delete=models.CASCADE, null=False) # cashier who consummated the transaction
     amount = models.DecimalField(max_digits=250, decimal_places=2, null=False)
-    old_balance = models.DecimalField(max_digits=250, decimal_places=2)
-    new_balance = models.DecimalField(max_digits=250, decimal_places=2)
+    old_balance = models.DecimalField(max_digits=250, decimal_places=2, null=False)
+    new_balance = models.DecimalField(max_digits=250, decimal_places=2, null=False)
 
     
     def __str__(self):

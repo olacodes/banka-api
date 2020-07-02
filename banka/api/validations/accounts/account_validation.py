@@ -59,5 +59,3 @@ def validate_account_status(value):
             _('account status can only be active or dormant or draft'),
             params={'value': value}
         )
-
-        

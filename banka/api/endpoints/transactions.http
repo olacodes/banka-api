@@ -1,0 +1,22 @@
+# DEBIT ACCOUNT
+
+POST  http://localhost:9000/api/v1/transactions/2121416143/debit/ HTTP/1.1
+content-type: application/json
+Cookie: 
+
+{
+    "amount": 2000,
+    "cashier": "081a9980-7333-4c87-b9eb-6f29a0f26487"
+}
+###
+
+# CREDIT ACCOUNT
+POST  http://localhost:9000/api/v1/transactions/2121416143/credit/ HTTP/1.1
+content-type: application/json
+Cookie: 
+
+{
+    "amount": 1000,
+    "cashier": "081a9980-7333-4c87-b9eb-6f29a0f26487"
+}
+###

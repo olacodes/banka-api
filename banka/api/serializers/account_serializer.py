@@ -13,7 +13,7 @@ class AccountSerializer(serializers.ModelSerializer):
         instance.owner = validated_data.get('owner', instance.owner)
         instance.account_type = validated_data.get('account_type', instance.account_type)
         instance.account_status = validated_data.get('account_status', instance.account_status)
-        instance.account_balance = validated_data.get('balance', instance.balance)
+        instance.balance = validated_data.get('balance', instance.balance)
 
         instance.save()
         return instance
